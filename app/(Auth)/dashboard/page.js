@@ -153,7 +153,7 @@ export default function Dashboard() {
             position="relative"
           >
             chakra
-            <Image layout="fill" src={"/images/dashboardChakraCard.png"} />
+            <Image layout="fill" src={"/images/dashboardChakraCard.png"} alt="Dashboard Banner"/>
           </Box>
         </Flex>
 

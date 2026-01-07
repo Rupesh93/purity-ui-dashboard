@@ -1,12 +1,10 @@
 import { Button, HStack } from "@chakra-ui/react";
+import LoginComp from "./components/purityUiComponents/loginComp";
 
 export default function Home() {
   return (
     <div>
-     <HStack>
-      <Button>Click me</Button>
-      <Button>Click me</Button>
-    </HStack>
+     <LoginComp/>
     </div>
   );
 }
