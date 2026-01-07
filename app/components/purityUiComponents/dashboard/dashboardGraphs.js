@@ -1,0 +1,214 @@
+"use client";
+
+import { Chart, useChart } from "@chakra-ui/charts";
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  IconButton,
+  Progress,
+  Span,
+  Text
+} from "@chakra-ui/react";
+import {
+  FaWallet
+} from "react-icons/fa";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+
+export default function DashboardGraphs() {
+  return (
+    <Grid py={6} templateColumns={{ base: "1fr", lg: "1fr 2fr" }} gap={6}>
+      {/* LEFT CARD */}
+      <GridItem>
+        <ActveUserGraph />
+      </GridItem>
+
+      {/* RIGHT CARD */}
+      <GridItem>
+        <Box bg="white" borderRadius="xl" p={5} boxShadow="sm">
+          <Flex direction={"column"} justify="space-between" mb={2}>
+            <Text fontWeight="semibold">Sales overview</Text>
+            <Text fontSize="14px" color="var(--primaryColor)">
+              (+5) more <Span color={"var(--secondaryColor)"}>in 2021</Span>
+            </Text>
+          </Flex>
+
+          {/* Line chart placeholder */}
+          <Box
+            h="260px"
+            borderRadius="lg"
+            bg="linear-gradient(180deg, rgba(79,209,197,0.25), rgba(255,255,255,0))"
+            position="relative"
+          >
+            <Box
+              position="absolute"
+              inset={0}
+              borderRadius="lg"
+              bg="blackAlpha.50"
+            />
+          </Box>
+        </Box>
+      </GridItem>
+    </Grid>
+  );
+}
+
+const ActveUserGraph = () => {
+  const chart = useChart({
+    data: [
+      { activeUsers: 350, month: "january" },
+      { activeUsers: 220, month: "february" },
+      { activeUsers: 130, month: "march" },
+      { activeUsers: 300, month: "april" },
+      { activeUsers: 500, month: "may" },
+      { activeUsers: 400, month: "june" },
+      { activeUsers: 300, month: "july" },
+      { activeUsers: 150, month: "august" },
+    ],
+    series: [{ name: "activeUsers", color: "var(--websiteWhite)" }],
+  });
+  const stats = [
+    {
+      label: "Users",
+      value: "32,984",
+      progress: 65,
+      icon: <FaWallet />,
+    },
+    {
+      label: "Clicks",
+      value: "2,42m",
+      progress: 85,
+      icon: <FaWallet />,
+    },
+    {
+      label: "Sales",
+      value: "2,400$",
+      progress: 40,
+      icon: <FaWallet />,
+    },
+    {
+      label: "Items",
+      value: "320",
+      progress: 70,
+      icon: <FaWallet />,
+    },
+  ];
+  return (
+    <Box
+      bg="white"
+      borderRadius="12px"
+      p={3}
+      w={"450px"}
+      overflow="hidden"
+      boxShadow="sm"
+    >
+      {/* Bar chart placeholder */}
+      <Box
+        h="200px"
+        borderRadius="8px"
+        bgGradient="linear(to-r, #2D325A, #0F1224)"
+        position={"relative"}
+      >
+        <Chart.Root
+          maxH="sm"
+          py={4}
+          px={0}
+          chart={chart}
+          h={"95%"}
+          bg="linear-gradient(135deg, #2E335A, #0B0F1A)"
+          border={"2px solid red"}
+          borderRadius={"8px"}
+        >
+          <BarChart data={chart.data} barSize={10} border={"2px solid red"}>
+            <CartesianGrid vertical={false} horizontal={false} />
+            <XAxis
+              axisLine={false}
+              tickLine={false}
+              dataKey={chart.key("month")}
+              hide={true}
+            />
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              domain={[0, 500]}
+              tickFormatter={(value) => `${value}`}
+            />
+            {chart.series.map((item) => (
+              <Bar
+                key={item.name}
+                isAnimationActive={false}
+                dataKey={chart.key(item.name)}
+                fill={chart.color(item.color)}
+                radius={15}
+                border={"2px solid red"}
+              />
+            ))}
+          </BarChart>
+        </Chart.Root>
+      </Box>
+
+      {/* Active Users */}
+      <Text fontWeight="bold" fontSize={"16px"}>
+        Active Users
+      </Text>
+      <Text color="var(--primaryColor)" mb={4} fontSize={"14px"}>
+        (+23) <Span color="var(--secondaryColor)">than last week</Span>
+      </Text>
+
+      <Flex gap={10} w="100%" justify="space-between" p={1}>
+        {stats.map((stat) => (
+          <Box key={stat.label} w="100%">
+            {/* Header */}
+            <Flex align="center" gap={3}>
+              <Flex
+                w="25px"
+                h="25px"
+                align="center"
+                justify="center"
+                bg="var(--primaryColor)"
+                borderRadius="lg"
+                color="white"
+              >
+                {/* <Icon as={stat.icon} boxSize={5} /> */}
+                <IconButton
+                  aria-label={stat.label + " icon button"}
+                  bg="var(--primaryColor)"
+                  borderRadius={"12px"}
+                >
+                  {stat.icon}
+                </IconButton>
+              </Flex>
+
+              <Text
+                color="var(--secondaryColor)"
+                fontWeight="bold"
+                fontSize={"12px"}
+              >
+                {stat.label}
+              </Text>
+            </Flex>
+
+            {/* Value */}
+            <Text
+              mt={3}
+              fontSize="18px"
+              fontWeight="bold"
+            >
+              {stat.value}
+            </Text>
+
+            {/* Progress */}
+            
+
+            <Progress.Root value={stat.progress}>
+              <Progress.Track bg={"var(--secondaryColor)"} h={"6px"} borderRadius={"12px"}>
+                <Progress.Range bg={"var(--primaryColor)"} />
+              </Progress.Track>
+            </Progress.Root>
+          </Box>
+        ))}
+      </Flex>
+    </Box>
+  );
+};
