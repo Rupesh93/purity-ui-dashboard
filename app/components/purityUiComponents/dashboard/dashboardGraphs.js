@@ -21,14 +21,14 @@ import {
 
 export default function DashboardGraphs() {
   return (
-    <Grid py={6} templateColumns={{ base: "1fr", lg: "1fr 2fr" }} gap={6}>
+    <Grid py={6} templateColumns={{ base: "1fr", lg: "1fr 2fr" }} gap={6} >
       {/* LEFT CARD */}
-      <GridItem>
+      <GridItem >
         <ActveUserGraph />
       </GridItem>
 
       {/* RIGHT CARD */}
-      <GridItem>
+      <GridItem >
         <Box bg="white" borderRadius="xl" p={5} boxShadow="sm">
           <Flex direction={"column"} justify="space-between" mb={2}>
             <Text fontWeight="semibold">Sales overview</Text>
@@ -95,7 +95,7 @@ const ActveUserGraph = () => {
       bg="white"
       borderRadius="12px"
       p={3}
-      w={"450px"}
+      w={"100%"}
       overflow="hidden"
       boxShadow="sm"
     >
