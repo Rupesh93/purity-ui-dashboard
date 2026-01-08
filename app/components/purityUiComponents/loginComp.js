@@ -94,18 +94,23 @@ export default function LoginComp() {
           </Box>
         </Flex>
         {/* Right Panel */}
-        <Flex flex={1} align={"right"} justify={"end"}>
+        <Flex flex={1} align={"right"} justify={"end"} position={"relative"}>
           <Box
-            h={"90%"}
+            h={"70%"}
             align={"right"}
             justify={"end"}
             w={"75%"}
-            position={"relative"}
+            position={"absolute"}
+            top={"0%"}
+            right={"0%"}
+            overflow={"hidden"}
+            borderRadius={"0px 0px 0px 15px"}
           >
             <Image
               layout="fill"
               src={"/images/loginBanner.svg"}
               alt="Login Banner"
+              style={{objectFit:"cover"}}
             />
           </Box>
         </Flex>
