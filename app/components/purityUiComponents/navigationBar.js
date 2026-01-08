@@ -21,7 +21,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 
-export default function NavigationBar() {
+export default function NavigationBar({currentPage}) {
   return (
     <Box px={8} pt={2} w="100%">
       <Flex align="center" w="100%" justifyContent="space-between" gap={6}>
@@ -36,7 +36,7 @@ export default function NavigationBar() {
             </Breadcrumb.Separator>
 
             <Breadcrumb.Item>
-              <Breadcrumb.CurrentLink>Dashboard</Breadcrumb.CurrentLink>
+              <Breadcrumb.CurrentLink>{currentPage}</Breadcrumb.CurrentLink>
             </Breadcrumb.Item>
           </Breadcrumb.List>
         </Breadcrumb.Root>

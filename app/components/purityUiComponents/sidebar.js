@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, HStack, Icon, Text, VStack } from "@chakra-ui/react";
+import Image from "next/image";
 import {
   FiBarChart2,
   FiCreditCard,
@@ -10,31 +11,37 @@ import {
   FiUser,
   FiUserPlus,
 } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
-const NavItem = ({ icon, label, active = false }) => {
+const NavItem = ({ icon, label, active = false, route = "/",curretActiveTab }) => {
+  const router = useRouter();
+  const isActive= `/${curretActiveTab}` === route;
   return (
     <HStack
       spacing={4}
       px={3}
       py={3}
       borderRadius="xl"
-      bg={active ? "var(--websiteWhite)" : "transparent"}
+      bg={isActive ? "var(--websiteWhite)" : "transparent"}
       cursor="pointer"
       _hover={{ bg: "var(--websiteWhite)" }}
       w="100%"
+      onClick={() => {
+        router.push(route);
+      }}
     >
       <Box
-        bg={active ? "var(--primaryColor)" : "var(--websiteWhite)"}
+        bg={isActive ? "var(--primaryColor)" : "var(--websiteWhite)"}
         px={2}
         py={1.5}
         borderRadius="12px"
-        color={active ? "var(--websiteWhite)" : "var(--primaryColor)"}
+        color={isActive ? "var(--websiteWhite)" : "var(--primaryColor)"}
       >
         <Icon as={icon} boxSize={4} />
       </Box>
       <Text
         fontWeight={"semibold"}
-        color={active ? "var(--primaryColor)" : "var(--secondaryColor)"}
+        color={isActive ? "var(--primaryColor)" : "var(--secondaryColor)"}
       >
         {label}
       </Text>
@@ -42,29 +49,30 @@ const NavItem = ({ icon, label, active = false }) => {
   );
 };
 
-export default function Sidebar() {
+export default function Sidebar({curretActiveTab}) {
   return (
-    <Box
-      w="260px"
-      h="100vh"
-      //   bg="white"
-      px={6}
-      py={6}
-      //   borderRight="1px solid"
-      //   borderColor="gray.100"
-    >
+    <Box w="260px" h="100vh" px={6} py={6}>
       {/* Logo */}
       <HStack mb={8} spacing={3}>
-        <Box w="32px" h="32px" bg="var(--primaryColor)" borderRadius="md" />
-        <Text fontWeight="bold">DASHBOARD</Text>
+        <Text fontWeight="bold">
+          {" "}
+          <Image
+            src={"./images/orgBlackLogo.svg"}
+            height={20}
+            width={20}
+            alt="Organisation Icon"
+            style={{ display: "inline" }}
+          />{" "}
+          &nbsp; PURITY UI
+        </Text>
       </HStack>
 
       {/* Main Menu */}
       <VStack align="stretch" spacing={2}>
-        <NavItem icon={FiHome} label="Dashboard" active />
-        <NavItem icon={FiBarChart2} label="Tables" />
-        <NavItem icon={FiCreditCard} label="Billing" />
-        <NavItem icon={FiTool} label="RTL" />
+        <NavItem icon={FiHome} label="Dashboard" route={"/dashboard"} curretActiveTab={curretActiveTab}/>
+        <NavItem icon={FiBarChart2} label="Tables" route={"/tables"} curretActiveTab={curretActiveTab}/>
+        <NavItem icon={FiCreditCard} label="Billing" route={"/billing"} curretActiveTab={curretActiveTab}/>
+        <NavItem icon={FiTool} label="RTL" route={"/rtl"} />
       </VStack>
 
       {/* <  my={6} /> */}
@@ -75,9 +83,9 @@ export default function Sidebar() {
       </Text>
 
       <VStack align="stretch" spacing={2}>
-        <NavItem icon={FiUser} label="Profile" />
-        <NavItem icon={FiLogIn} label="Sign In" />
-        <NavItem icon={FiUserPlus} label="Sign Up" />
+        <NavItem icon={FiUser} label="Profile" route={"/profile"} curretActiveTab={curretActiveTab}/>
+        <NavItem icon={FiLogIn} label="Sign In" route={"/"} curretActiveTab={curretActiveTab}/>
+        <NavItem icon={FiUserPlus} label="Sign Up" route={"/signup"} curretActiveTab={curretActiveTab}/>
       </VStack>
     </Box>
   );

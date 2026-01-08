@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Chakra Soft UI Version",
+    "icon": "./images/xd.svg",
+    "members": ["/avatars/a1.jpg", "/avatars/a2.jpg", "/avatars/a3.jpg", "/avatars/a3.jpg", "/avatars/a3.jpg"],
+    "budget": "$14,000",
+    "status": "Working",
+    "completion": 60
+  },
+  {
+    "name": "Add Progress Track",
+    "icon": "./images/atlasian.svg",
+    "members": ["/avatars/a2.jpg", "/avatars/a4.jpg"],
+    "budget": "$3,000",
+    "status": "Canceled",
+    "completion": 10
+  },
+  {
+    "name": "Fix Platform Errors",
+    "icon": "./images/slack.svg",
+    "members": ["/avatars/a1.jpg", "/avatars/a3.jpg"],
+    "budget": "Not set",
+    "status": "Done",
+    "completion": 100
+  },
+  {
+    "name": "Launch our Mobile App",
+    "icon": "./images/spotify.svg",
+    "members": ["/avatars/a2.jpg", "/avatars/a3.jpg", "/avatars/a4.jpg", "/avatars/a3.jpg"],
+    "budget": "$32,000",
+    "status": "Done",
+    "completion": 100
+  },
+  {
+    "name": "Add the New Pricing Page",
+    "icon": "./images/jira.svg",
+    "members": ["/avatars/a1.jpg", "/avatars/a2.jpg", "/avatars/a3.jpg", "/avatars/a3.jpg", "/avatars/a3.jpg"],
+    "budget": "$400",
+    "status": "Working",
+    "completion": 25
+  },
+  {
+    "name": "Redesign New Online Shop",
+    "icon": "./images/invision.svg",
+    "members": ["/avatars/a2.jpg", "/avatars/a4.jpg"],
+    "budget": "$7,600",
+    "status": "Working",
+    "completion": 40
+  }
+]

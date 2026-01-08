@@ -1,19 +1,9 @@
 "use client";
-import {
-  Box,
-  Button,
-  Flex,
-  Input,
-  Span,
-  Stack,
-  Switch,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Input, Span, Switch, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { IoIosCube, IoMdPerson } from "react-icons/io";
-import { IoKey, IoPersonCircle } from "react-icons/io5";
 import Footer from "./footer";
+import Navbar from "./navbar";
 
 export default function LoginComp() {
   return (
@@ -24,52 +14,7 @@ export default function LoginComp() {
       position={"relative"}
     >
       {/* Navbar */}
-      <Flex
-        px={10}
-        py={3}
-        align="center"
-        justify="space-between"
-        position={"absolute"}
-        w={"70%"}
-        zIndex={10}
-        bg="var(--websiteWhite)"
-        top={"20px"}
-        left={"50%"}
-        transform={"translate(-50%)"}
-        borderRadius={"14px"}
-        boxShadow={"0px 7px 23px 0 rgba(0, 0, 0, 0.05)"}
-      >
-        <Text fontWeight="bold">PURITY UI DASHBOARD</Text>
-
-        <Stack direction="row" gap={4} fontSize={"14px"} fontWeight={"bold"}>
-          <Link href={"/"}>
-            <Stack direction={"row"} align={"center"}>
-              <IoIosCube /> Dashboard
-            </Stack>
-          </Link>
-          <Link href={"/"}>
-            <Stack direction={"row"} align={"center"}>
-              <IoMdPerson />
-              Profile
-            </Stack>
-          </Link>
-          <Link href={"/"}>
-            <Stack direction={"row"} align={"center"}>
-              <IoPersonCircle />
-              Sign Up
-            </Stack>
-          </Link>
-          <Link href={"/"}>
-            <Stack direction={"row"} align={"center"}>
-              <IoKey />
-              Sign In
-            </Stack>
-          </Link>
-        </Stack>
-        <Button fontSize="10px" px={8} py={0} borderRadius={"34px"}>
-          Free Download
-        </Button>
-      </Flex>
+      <Navbar />
 
       {/* Main */}
       <Flex flex="1">

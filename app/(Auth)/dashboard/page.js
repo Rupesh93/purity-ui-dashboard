@@ -1,5 +1,6 @@
 "use client";
 import DashboardGraphs from "@/app/components/purityUiComponents/dashboard/dashboardGraphs";
+import ProjectsTable from "@/app/components/purityUiComponents/projectsTable";
 
 import { Box, Flex, Heading, IconButton, Link, Text } from "@chakra-ui/react";
 import Image from "next/image";
@@ -63,7 +64,7 @@ export default function Dashboard() {
             key={i}
             bg="var(--websiteWhite)"
             p={4}
-            rounded="md"
+            borderRadius={"15px"}
             // boxShadow="0px 3.5px 5.5px 0 #00000005"
             align="center"
             justify="space-between"
@@ -103,14 +104,13 @@ export default function Dashboard() {
         <Flex
           bg="white"
           flex="1"
-          rounded="md"
-          boxShadow="md"
-          p={6}
-          align="center"
+          rounded="15px"
+          p={4}
           justify="space-between"
-          minH="180px"
+          minH="250px"
         >
-          <Box flex="1" mr={6}>
+          
+          <Box flex="1" mr={6} position={"relative"}>
             <Text
               fontSize="xs"
               fontWeight="semibold"
@@ -137,6 +137,8 @@ export default function Dashboard() {
                 textDecoration: "underline",
                 color: "var(--primaryColor)",
               }}
+              position={"absolute"}
+              bottom={"20px"}
             >
               Read more <Box as={FaArrowRight} ml={2} />
             </Link>
@@ -144,8 +146,8 @@ export default function Dashboard() {
 
           {/* Chakra logo block */}
           <Box
-            w="160px"
-            h="120px"
+            w="280px"
+            h="250px"
             rounded="md"
             display="flex"
             alignItems="center"
@@ -160,26 +162,23 @@ export default function Dashboard() {
         {/* Right card */}
         <Box
           flex="1"
-          rounded="md"
-          boxShadow="md"
+          rounded="15px"
           position="relative"
           overflow="hidden"
           minH="180px"
-          bgImage="url('/mnt/data/64406a7a-4b85-4897-b2aa-fe2a9bdf1bb5.png')"
+          bgImage="url('./images/teamMeeting.jpg')"
           bgSize="cover"
           bgPosition="center"
           color="white"
-          p={6}
           display="flex"
           flexDirection="column"
-          justifyContent="flex-end"
         >
           <Box
             bg="rgba(0,0,0,0.45)"
             p={4}
             rounded="md"
-            maxW="80%"
-            boxShadow="md"
+            w="100%"
+            h="100%"
           >
             <Text fontWeight="bold" fontSize="md" mb={2}>
               Work with the Rockets
@@ -197,6 +196,8 @@ export default function Dashboard() {
               display="inline-flex"
               alignItems="center"
               _hover={{ textDecoration: "underline", color: "white" }}
+              position={"absolute"}
+              bottom={"20px"}
             >
               Read more <Box as={FaArrowRight} ml={2} />
             </Link>
@@ -204,6 +205,7 @@ export default function Dashboard() {
         </Box>
       </Flex>
       <DashboardGraphs />
+      <ProjectsTable callForm={"dashboard"}/>
     </Box>
   );
 }

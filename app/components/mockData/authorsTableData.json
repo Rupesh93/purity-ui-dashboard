@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Esthera Jackson",
+    "email": "esthera@simmmple.com",
+    "role": "Manager",
+    "department": "Organization",
+    "status": "Online",
+    "employed": "14/06/21",
+    "avatar": "https://thispersondoesnotexist.com"
+  },
+  {
+    "name": "Alexa Liras",
+    "email": "alexa@simmmple.com",
+    "role": "Programmer",
+    "department": "Developer",
+    "status": "Offline",
+    "employed": "14/06/21",
+    "avatar": "https://thispersondoesnotexist.com"
+  },
+  {
+    "name": "Laurent Michael",
+    "email": "laurent@simmmple.com",
+    "role": "Executive",
+    "department": "Projects",
+    "status": "Online",
+    "employed": "14/06/21",
+    "avatar": "https://thispersondoesnotexist.com"
+  },
+  {
+    "name": "Freudardo Hill",
+    "email": "freudardo@simmmple.com",
+    "role": "Manager",
+    "department": "Organization",
+    "status": "Online",
+    "employed": "14/06/21",
+    "avatar": "https://thispersondoesnotexist.com"
+  },
+  {
+    "name": "Daniel Thomas",
+    "email": "daniel@simmmple.com",
+    "role": "Programmer",
+    "department": "Developer",
+    "status": "Offline",
+    "employed": "14/06/21",
+    "avatar": "https://thispersondoesnotexist.com"
+  },
+  {
+    "name": "Mark Wilson",
+    "email": "mark@simmmple.com",
+    "role": "Designer",
+    "department": "UI/UX Design",
+    "status": "Offline",
+    "employed": "14/06/21",
+    "avatar": "https://thispersondoesnotexist.com"
+  }
+]

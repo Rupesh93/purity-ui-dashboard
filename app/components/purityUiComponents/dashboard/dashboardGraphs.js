@@ -9,12 +9,15 @@ import {
   IconButton,
   Progress,
   Span,
-  Text
+  Text,
 } from "@chakra-ui/react";
-import {
-  FaWallet
-} from "react-icons/fa";
+import { FaWallet } from "react-icons/fa";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import {
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+} from "recharts";
 
 export default function DashboardGraphs() {
   return (
@@ -37,16 +40,9 @@ export default function DashboardGraphs() {
           {/* Line chart placeholder */}
           <Box
             h="260px"
-            borderRadius="lg"
-            bg="linear-gradient(180deg, rgba(79,209,197,0.25), rgba(255,255,255,0))"
             position="relative"
           >
-            <Box
-              position="absolute"
-              inset={0}
-              borderRadius="lg"
-              bg="blackAlpha.50"
-            />
+           <SalesOverview/>
           </Box>
         </Box>
       </GridItem>
@@ -117,7 +113,6 @@ const ActveUserGraph = () => {
           chart={chart}
           h={"95%"}
           bg="linear-gradient(135deg, #2E335A, #0B0F1A)"
-          border={"2px solid red"}
           borderRadius={"8px"}
         >
           <BarChart data={chart.data} barSize={10} border={"2px solid red"}>
@@ -128,11 +123,13 @@ const ActveUserGraph = () => {
               dataKey={chart.key("month")}
               hide={true}
             />
+
             <YAxis
               axisLine={false}
               tickLine={false}
+              ticks={[0, 100, 200, 300, 400, 500]}
               domain={[0, 500]}
-              tickFormatter={(value) => `${value}`}
+              tick={{ fill: "#ffffff" }}
             />
             {chart.series.map((item) => (
               <Bar
@@ -190,19 +187,18 @@ const ActveUserGraph = () => {
             </Flex>
 
             {/* Value */}
-            <Text
-              mt={3}
-              fontSize="18px"
-              fontWeight="bold"
-            >
+            <Text mt={3} fontSize="18px" fontWeight="bold">
               {stat.value}
             </Text>
 
             {/* Progress */}
-            
 
             <Progress.Root value={stat.progress}>
-              <Progress.Track bg={"var(--secondaryColor)"} h={"6px"} borderRadius={"12px"}>
+              <Progress.Track
+                bg={"var(--secondaryColor)"}
+                h={"4px"}
+                borderRadius={"12px"}
+              >
                 <Progress.Range bg={"var(--primaryColor)"} />
               </Progress.Track>
             </Progress.Root>
@@ -212,3 +208,78 @@ const ActveUserGraph = () => {
     </Box>
   );
 };
+const SalesOverview=()=> {
+  const data = [
+  { month: "Jan", dark: 500, light: 180 },
+  { month: "Feb", dark: 160, light: 220 },
+  { month: "Mar", dark: 190, light: 210 },
+  { month: "Apr", dark: 280, light: 350 },
+  { month: "May", dark: 210, light: 360 },
+  { month: "Jun", dark: 240, light: 470 },
+  { month: "Jul", dark: 260, light: 420 },
+  { month: "Aug", dark: 210, light: 320 },
+  { month: "Sep", dark: 120, light: 360 },
+  { month: "Oct", dark: 150, light: 220 },
+  { month: "Nov", dark: 180, light: 400 },
+  { month: "Dec", dark: 130, light: 430 },
+];
+
+  return (
+    <ResponsiveContainer width="100%" height={"100%"}>
+      <AreaChart data={data}>
+        {/* Gradients */}
+        <defs>
+          <linearGradient id="darkGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#2E3440" stopOpacity={0.35} />
+            <stop offset="100%" stopColor="#2E3440" stopOpacity={0} />
+          </linearGradient>
+
+          <linearGradient id="lightGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#4FD1C5" stopOpacity={0.5} />
+            <stop offset="100%" stopColor="#4FD1C5" stopOpacity={0} />
+          </linearGradient>
+        </defs>
+
+        {/* Grid */}
+        <CartesianGrid
+          strokeDasharray="4 4"
+          vertical={false}
+          stroke="#E2E8F0"
+        />
+
+        {/* Axes */}
+        <XAxis
+          dataKey="month"
+          axisLine={false}
+          tickLine={false}
+          tick={{ fill: "#A0AEC0", fontSize: 12 }}
+        />
+
+        <YAxis
+          axisLine={false}
+          tickLine={false}
+          ticks={[0, 100, 200, 300, 400, 500]}
+          tick={{ fill: "#A0AEC0", fontSize: 12 }}
+        />
+
+        {/* Dark Area */}
+        <Area
+          type="monotone"
+          dataKey="dark"
+          stroke="#2E3440"
+          strokeWidth={2.5}
+          fill="url(#darkGradient)"
+        />
+
+        {/* Light Area */}
+        <Area
+          type="monotone"
+          dataKey="light"
+          stroke="#4FD1C5"
+          strokeWidth={2.5}
+          fill="url(#lightGradient)"
+        />
+      </AreaChart>
+    </ResponsiveContainer>
+  );
+}
