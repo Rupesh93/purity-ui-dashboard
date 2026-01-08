@@ -4,8 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "./footer";
 import Navbar from "./navbar";
+import { useRouter } from "next/navigation";
 
 export default function LoginComp() {
+  const router = useRouter();
   return (
     <Flex
       minH="100vh"
@@ -77,6 +79,7 @@ export default function LoginComp() {
                 _hover={{ bg: "teal.500" }}
                 size="lg"
                 w={"100%"}
+                onClick={()=>{router.push("./dashboard")}}
               >
                 SIGN IN
               </Button>

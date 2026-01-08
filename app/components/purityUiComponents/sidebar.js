@@ -13,9 +13,15 @@ import {
 } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 
-const NavItem = ({ icon, label, active = false, route = "/",curretActiveTab }) => {
+const NavItem = ({
+  icon,
+  label,
+  active = false,
+  route = "/",
+  curretActiveTab,
+}) => {
   const router = useRouter();
-  const isActive= `/${curretActiveTab}` === route;
+  const isActive = `/${curretActiveTab}` === route;
   return (
     <HStack
       spacing={4}
@@ -49,12 +55,19 @@ const NavItem = ({ icon, label, active = false, route = "/",curretActiveTab }) =
   );
 };
 
-export default function Sidebar({curretActiveTab}) {
+export default function Sidebar({ curretActiveTab }) {
+  const router = useRouter();
   return (
     <Box w="260px" h="100vh" px={6} py={6}>
       {/* Logo */}
       <HStack mb={8} spacing={3}>
-        <Text fontWeight="bold">
+        <Text
+          fontWeight="bold"
+          onClick={() => {
+            router.push("/");
+          }}
+          cursor={"pointer"}
+        >
           {" "}
           <Image
             src={"./images/orgBlackLogo.svg"}
@@ -69,9 +82,24 @@ export default function Sidebar({curretActiveTab}) {
 
       {/* Main Menu */}
       <VStack align="stretch" spacing={2}>
-        <NavItem icon={FiHome} label="Dashboard" route={"/dashboard"} curretActiveTab={curretActiveTab}/>
-        <NavItem icon={FiBarChart2} label="Tables" route={"/tables"} curretActiveTab={curretActiveTab}/>
-        <NavItem icon={FiCreditCard} label="Billing" route={"/billing"} curretActiveTab={curretActiveTab}/>
+        <NavItem
+          icon={FiHome}
+          label="Dashboard"
+          route={"/dashboard"}
+          curretActiveTab={curretActiveTab}
+        />
+        <NavItem
+          icon={FiBarChart2}
+          label="Tables"
+          route={"/tables"}
+          curretActiveTab={curretActiveTab}
+        />
+        <NavItem
+          icon={FiCreditCard}
+          label="Billing"
+          route={"/billing"}
+          curretActiveTab={curretActiveTab}
+        />
         <NavItem icon={FiTool} label="RTL" route={"/rtl"} />
       </VStack>
 
@@ -83,9 +111,24 @@ export default function Sidebar({curretActiveTab}) {
       </Text>
 
       <VStack align="stretch" spacing={2}>
-        <NavItem icon={FiUser} label="Profile" route={"/profile"} curretActiveTab={curretActiveTab}/>
-        <NavItem icon={FiLogIn} label="Sign In" route={"/"} curretActiveTab={curretActiveTab}/>
-        <NavItem icon={FiUserPlus} label="Sign Up" route={"/signup"} curretActiveTab={curretActiveTab}/>
+        <NavItem
+          icon={FiUser}
+          label="Profile"
+          route={"/profile"}
+          curretActiveTab={curretActiveTab}
+        />
+        <NavItem
+          icon={FiLogIn}
+          label="Sign In"
+          route={"/"}
+          curretActiveTab={curretActiveTab}
+        />
+        <NavItem
+          icon={FiUserPlus}
+          label="Sign Up"
+          route={"/signup"}
+          curretActiveTab={curretActiveTab}
+        />
       </VStack>
     </Box>
   );
